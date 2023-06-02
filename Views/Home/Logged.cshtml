@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Logged in";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Your JinglePlanner</h1>
+    <form method="post" asp-controller="Home" asp-action="Index">
+        <button type="submit">Log out</button>
+    </form>
+    <form method="post" asp-controller="Recipes" asp-action="Index">
+        <button type="submit">Recipes</button>
+    </form>
+    <form method="post" asp-controller="Parties" asp-action="Index">
+        <button type="submit">Parties</button>
+    </form>
+    <form method="post" asp-controller="Guests" asp-action="Index">
+        <button type="submit">Guests</button>
+    </form>
+</div>

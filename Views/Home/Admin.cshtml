@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Admin Page</h1>
+    <form method="post" asp-controller="Home" asp-action="Index">
+        <button type="submit">Log out</button>
+    </form>
+    <form method="post" asp-controller="Recipes" asp-action="Index">
+        <button type="submit">Recipes</button>
+    </form>
+    <form method="post" asp-controller="Users" asp-action="Index">
+        <button type="submit">Users</button>
+    </form>
+</div>
