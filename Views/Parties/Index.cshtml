@@ -1,10 +1,18 @@
 @model IEnumerable<JinglePlanner.Models.Party>
-
+<form method="post" asp-controller="Home" asp-action="Logged">
+        <button type="submit">Home</button>
+    </form>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
 
 <p>
     <a asp-action="Create">Create New</a>

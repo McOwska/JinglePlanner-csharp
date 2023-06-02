@@ -21,5 +21,7 @@ namespace JinglePlanner.Data
         public DbSet<JinglePlanner.Models.Guest> Guest { get; set; } = default!;
 
         public DbSet<JinglePlanner.Models.Party> Party { get; set; } = default!;
+
+   
     }
 }

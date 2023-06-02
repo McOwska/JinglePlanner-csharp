@@ -62,12 +62,20 @@ namespace JinglePlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                if(PartyExists(party.Name, party.Owner)){
+                    TempData["ErrorMessage"] = "Party with this name and host already exists.";
+                    return RedirectToAction("Index", "Parties");
+                }
                 _context.Add(party);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(party);
+        }
+
+        public bool PartyExists(string PartyName, string UserName)
+        {
+            return _context.Party.Any(p => p.Name == PartyName && p.Owner == UserName);
         }
 
         // GET: Parties/Edit/5
@@ -127,6 +135,16 @@ namespace JinglePlanner.Controllers
             if (id == null || _context.Party == null)
             {
                 return NotFound();
+            }
+
+            var user = HttpContext.Session.GetString("UserName");
+            var partyOwner = _context.Party.Where(p => p.Id == id).Select(p => p.Owner).FirstOrDefault();
+            
+            if (user != partyOwner && user != "admin")
+            {
+                string message = $"Your are not allowed to delete this party.";
+                TempData["ErrorMessage"] = message;
+                return RedirectToAction("Index", "Parties");
             }
 
             var party = await _context.Party

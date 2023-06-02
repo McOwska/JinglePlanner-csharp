@@ -35,18 +35,13 @@ namespace JinglePlanner.Controllers
                 recipes = recipes.Where(s => s.Name.Contains(searchString));
             }
 
-            if (recipeType != RecipeType.All)
-            {
-                recipes = recipes.Where(x => x.Type == recipeType);
-            }
+            // if (recipeType != RecipeType.All)
+            // {
+            //     recipes = recipes.Where(x => x.Type == recipeType);
+            // }
 
             return View(recipes);
             
-            // if(HttpContext.Session.GetString("IsLoggedIn") == "true")
-            //   return _context.Recipe != null ? 
-            //               View(await _context.Recipe.ToListAsync()) :
-            //               Problem("Entity set 'JinglePlannerContext.Recipe'  is null.");
-            // return RedirectToAction("Index", "Home");
         }
 
         // GET: Recipes/Details/5
@@ -94,6 +89,14 @@ namespace JinglePlanner.Controllers
             if(HttpContext.Session.GetString("IsLoggedIn") == "true"){
             if (ModelState.IsValid)
             {
+                var allRecipes = _context.Recipe.ToList();
+                var recipeExists = allRecipes.Any(x => x.Name == recipe.Name);
+                if (recipeExists)
+                {
+                    TempData["ErrorMessage"] = "Recipe already exists.";
+                   
+                    return RedirectToAction("Index", "Recipes");
+                }
                 _context.Add(recipe);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

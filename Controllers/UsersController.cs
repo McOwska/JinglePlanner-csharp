@@ -249,6 +249,7 @@ namespace JinglePlanner.Controllers
                     }
                     HttpContext.Session.SetString("IsLoggedIn", "true");
                     HttpContext.Session.SetString("IsAdmin", "false");
+                    HttpContext.Session.SetString("UserName", user.UserName);
                     return RedirectToAction("Logged", "Home");
                 }
             }

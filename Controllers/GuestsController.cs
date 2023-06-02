@@ -65,11 +65,20 @@ namespace JinglePlanner.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(GuestAtPartyExists(guest.PartyName, guest.Name)){
+                    TempData["ErrorMessage"] = "Guest already exists at this party.";
+                    return RedirectToAction("Index", "Guests");
+                }
                 _context.Add(guest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(guest);
+        }
+
+        public bool GuestAtPartyExists(string partyName, string guestName)
+        {
+            return _context.Guest.Any(e => e.PartyName == partyName && e.Name == guestName);
         }
 
         // GET: Guests/Edit/5
