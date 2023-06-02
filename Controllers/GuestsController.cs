@@ -19,11 +19,34 @@ namespace JinglePlanner.Controllers
             _context = context;
         }
 
+        private string UserName(){
+            if(HttpContext.Session.GetString("UserName") == null){
+                return "";
+            }
+            return HttpContext.Session.GetString("UserName");
+        }
+
         // GET: Guests
-        public async Task<IActionResult> Index()
-        {
+        public async Task<IActionResult> Index(string partyName, string searchString)
+        {   
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+            
+
             var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
+
+            if (!String.IsNullOrEmpty(partyName))
+            {
+                var guests = _context.Guest.Where(g => g.PartyName == partyName);
+                return View(await guests.ToListAsync());
+            }
+
+            if(!String.IsNullOrEmpty(searchString))
+            {
+                var guests = _context.Guest.Where(g => g.Name.Contains(searchString));
+                return View(await guests.ToListAsync());
+            }
 
             return _context.Guest != null ? 
                           View(await _context.Guest.ToListAsync()) :

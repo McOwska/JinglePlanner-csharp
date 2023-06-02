@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JinglePlanner.Data;
 using JinglePlanner.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace JinglePlanner.Controllers
 {
@@ -19,12 +20,28 @@ namespace JinglePlanner.Controllers
             _context = context;
         }
 
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        private string UserName(){
+            if(HttpContext.Session.GetString("UserName") == null){
+                return "";
+            }
+            return HttpContext.Session.GetString("UserName");
+        }
         // GET: Parties
         public async Task<IActionResult> Index()
         {
-              return _context.Party != null ? 
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+
+            if(userName == "admin"){
+                return _context.Party != null ? 
                           View(await _context.Party.ToListAsync()) :
                           Problem("Entity set 'JinglePlannerContext.Party'  is null.");
+            }
+              
+            var parties = _context.Party.Where(p => p.Owner == userName).ToList();
+            return View(parties);
         }
 
         // GET: Parties/Details/5
@@ -58,23 +75,26 @@ namespace JinglePlanner.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,DateFrom,DateTo,Location,Owner")] Party party)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,DateFrom,DateTo,Location, Owner")] Party party)
         {
             if (ModelState.IsValid)
             {
-                if(PartyExists(party.Name, party.Owner)){
+                if(PartyExists(party.Name)){
                     TempData["ErrorMessage"] = "Party with this name and host already exists.";
                     return RedirectToAction("Index", "Parties");
                 }
+                party.Owner = HttpContext.Session.GetString("UserName");
+       
                 _context.Add(party);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(party);
         }
-
-        public bool PartyExists(string PartyName, string UserName)
+     
+        public bool PartyExists(string PartyName)
         {
+            string UserName = HttpContext.Session.GetString("UserName");
             return _context.Party.Any(p => p.Name == PartyName && p.Owner == UserName);
         }
 

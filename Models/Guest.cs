@@ -19,6 +19,8 @@ public class Guest
     
     public string PartyName { get; set; }
 
+    public string Responsible { get; set; }
+
 }
 
 

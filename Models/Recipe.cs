@@ -5,11 +5,11 @@ namespace JinglePlanner.Models;
 
 public enum RecipeType
 {
+    All,
     Christams,
     Easter,
     Birthday,
-    Other,
-    All
+    Other
 }
 
 

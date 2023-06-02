@@ -21,7 +21,7 @@ namespace JinglePlanner.Controllers
         }
 
         // GET: Recipes
-        public async Task<IActionResult> Index(string searchString, RecipeType recipeType)
+        public async Task<IActionResult> Index(string? recipeType, string? searchString)
         {
             
            
@@ -30,15 +30,22 @@ namespace JinglePlanner.Controllers
             var recipes = from m in _context.Recipe
                          select m;
             
-            if (!String.IsNullOrEmpty(searchString))
+            
+            if(!String.IsNullOrEmpty(recipeType))
             {
-                recipes = recipes.Where(s => s.Name.Contains(searchString));
+                RecipeType enumValue = (RecipeType)Enum.Parse(typeof(RecipeType), recipeType);
+
+                if (recipeType != "All")
+                {
+                    recipes = recipes.Where(x => x.Type == enumValue);
+                }
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    recipes = recipes.Where(s => s.Name.Contains(searchString));
+                }
             }
 
-            // if (recipeType != RecipeType.All)
-            // {
-            //     recipes = recipes.Where(x => x.Type == recipeType);
-            // }
+            
 
             return View(recipes);
             
