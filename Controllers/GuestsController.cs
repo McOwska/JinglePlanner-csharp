@@ -31,7 +31,7 @@ namespace JinglePlanner.Controllers
         {   
             string userName = UserName();
             if(userName == "") return RedirectToAction("Index", "Home");
-            
+
 
             var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
@@ -76,6 +76,8 @@ namespace JinglePlanner.Controllers
         {
             var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
+            var users = _context.User.Select(u => u.UserName).Distinct().ToList();
+            ViewBag.Users = new SelectList(users);
             return View();
         }
 
@@ -84,7 +86,7 @@ namespace JinglePlanner.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Email,Arrival,Departure,PartyName")] Guest guest)
+        public async Task<IActionResult> Create([Bind("Id,Name,Email,Arrival,Departure,PartyName,Responsible")] Guest guest)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +94,7 @@ namespace JinglePlanner.Controllers
                     TempData["ErrorMessage"] = "Guest already exists at this party.";
                     return RedirectToAction("Index", "Guests");
                 }
+                guest.Responsible = "test";
                 _context.Add(guest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -38,6 +38,11 @@
                 
                 <span asp-validation-for="PartyName" class="text-danger"></span>
             </div>
+            <div class="form-group" style="display:none;">
+                <label asp-for="Responsible" class="control-label"></label>
+                <select asp-for="Responsible" class="form-control" asp-items="@ViewBag.Users" hidden></select>
+                <span asp-validation-for="Responsible" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

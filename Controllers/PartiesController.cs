@@ -84,7 +84,6 @@ namespace JinglePlanner.Controllers
                     return RedirectToAction("Index", "Parties");
                 }
                 party.Owner = HttpContext.Session.GetString("UserName");
-       
                 _context.Add(party);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
