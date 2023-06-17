@@ -32,8 +32,6 @@ namespace JinglePlanner.Controllers
             string userName = UserName();
             if(userName == "") return RedirectToAction("Index", "Home");
 
-
-            // var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
             var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
 

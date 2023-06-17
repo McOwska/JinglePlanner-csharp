@@ -22,8 +22,14 @@ namespace JinglePlanner.Controllers
         // GET: Dishes
         public async Task<IActionResult> Index()
         {
-            var jinglePlannerContext = _context.Dish.Include(d => d.Recipe);
-            return View(await jinglePlannerContext.ToListAsync());
+            string userName = UserName();
+            var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
+
+            var guestsAll = _context.Guest.Where(g=>parties.Contains(g.PartyName)).Select(g=>g.Name).Distinct().ToList();
+           
+            var dishes = _context.Dish.Where(d=>guestsAll.Contains(d.GuestName));
+
+            return View(await dishes.ToListAsync());
         }
 
         // GET: Dishes/Details/5
