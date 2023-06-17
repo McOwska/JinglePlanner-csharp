@@ -20,14 +20,22 @@ namespace JinglePlanner.Controllers
         }
 
         // GET: Dishes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string ? partyName)
         {
-            string userName = UserName();
-            var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
 
-            var guestsAll = _context.Guest.Where(g=>parties.Contains(g.PartyName)).Select(g=>g.Name).Distinct().ToList();
-           
-            var dishes = _context.Dish.Where(d=>guestsAll.Contains(d.GuestName));
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+            if(userName == "admin") return View(await _context.Dish.ToListAsync());
+
+            var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
+            ViewBag.PartiesNames = new SelectList(parties);
+            var guests = _context.Guest.Where(g => parties.Contains(g.PartyName)).Select(g=>g.Name).Distinct().ToList();
+            var dishes = _context.Dish.Where(d => guests.Contains(d.GuestName)).Where(d => parties.Contains(d.PartyName)).Select(d=>d);
+            
+            if (!String.IsNullOrEmpty(partyName))
+            {
+                dishes = dishes.Where(d => d.PartyName == partyName);
+            }
 
             return View(await dishes.ToListAsync());
         }
@@ -63,16 +71,19 @@ namespace JinglePlanner.Controllers
             string userName = UserName();
             var recipies = _context.Recipe.Select(r => r.Name).ToList();
             var recipiesSelectList = new SelectList(recipies);
-            //recipiesSelectList.Append(new SelectListItem { Text = "New Recipe", Value = "New Recipe" });
             ViewBag.Recipies = recipiesSelectList;
-            var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).ToList();
-           // var guests = _context.Guest.Where(g=>parties.Contains(g.PartyName));
-            var guests = _context.Guest.Select(g=>g.Name);
+
+            var parties = _context.Party.Where(p => p.Owner == userName).ToList();
             var guestsWithParties = new List<string>();
-            foreach(var guest in guests){
-                guestsWithParties.Add(guest + " - " + _context.Guest.Where(g=>g.Name == guest).Select(g=>g.PartyName).FirstOrDefault());
+            foreach(var party in parties){
+                var guests = _context.Guest.Where(g => g.PartyName == party.Name).ToList();
+                foreach(var guest in guests){
+                    guestsWithParties.Add(guest.Name + " - " + party.Name);
+                }
             }
+
             ViewBag.Guests = new SelectList(guestsWithParties);
+
             return View();
 
         }
@@ -82,16 +93,29 @@ namespace JinglePlanner.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DishId,Name,GuestName,Description,RecipeId")] Dish dish)
+        public async Task<IActionResult> Create([Bind("DishId,Name,GuestAndParty,Description,RecipeId")] Dish dish)
         {
-            if (ModelState.IsValid)
+            if (!string.IsNullOrEmpty(dish.GuestAndParty))
             {
-                _context.Add(dish);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                string[] guestAndParty = dish.GuestAndParty.Split(" - ");
+
+                if (guestAndParty.Length == 2)
+                {
+                    dish.GuestName = guestAndParty[0];
+                    dish.PartyName = guestAndParty[1];
+                }
+                if(dish.RecipeId != null){
+                    dish.Recipe = _context.Recipe.Find(dish.RecipeId);
+                }
+                else{
+                    dish.Recipe = null;
+                }
+
             }
-            //ViewData["RecipeId"] = new SelectList(_context.Recipe, "Id", "Description", dish.RecipeId);
-            return View(dish);
+             _context.Add(dish);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+            
         }
 
         // GET: Dishes/Edit/5

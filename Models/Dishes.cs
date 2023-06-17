@@ -8,7 +8,9 @@ public class Dish
     public int DishId { get; set; }
     [Required]
     public string Name { get; set; } = default!;
-    public string GuestName { get; set; } = default!;
+    public string GuestAndParty { get; set; } = default!;
+    public string? PartyName { get; set; } = default!;
+    public string? GuestName { get; set; } = default!;
     public string Description { get; set; } = default!;
     public int? RecipeId { get; set; }
     public Recipe? Recipe { get; set; }

@@ -9,6 +9,10 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div class="form-group">
+        @Html.DropDownList("PartyName", (SelectList)ViewBag.PartiesNames, "All")
+</div>
+<button type="submit" class="btn btn-primary">Search</button>
 <table class="table">
     <thead>
         <tr>
@@ -18,6 +22,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.GuestName)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartyName)
+            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
@@ -37,10 +45,13 @@
                 @Html.DisplayFor(modelItem => item.GuestName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.PartyName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Recipe.Description)
+                @Html.DisplayFor(modelItem => item.Recipe.Name)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.DishId">Edit</a> |
