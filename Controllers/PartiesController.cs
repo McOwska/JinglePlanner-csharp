@@ -204,5 +204,7 @@ namespace JinglePlanner.Controllers
             var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
             return parties;
         }
+
+    
     }
 }

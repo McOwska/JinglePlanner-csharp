@@ -18,6 +18,8 @@ public class Party
     public string? Location { get; set; }
    
     public string Owner { get; set; }
+
+    public int NumberOfGuests { get; set; } = 0;
 }
 
 

@@ -25,3 +25,15 @@ public class Guest
 
 
 // dotnet aspnet-codegenerator controller -name GuestsController -m Guest -dc JinglePlanner.Data.JinglePlannerContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries --databaseProvider sqlite
+
+
+/*
+Dodać tabelę znajomi tak, by móc dodawać do swoich imprez tylko znajomych
+Zapraszanie do znajomych na zasadzie podwójnego zaproszenia - osoba A do osoby B i osoba B do osoby A
+
+Wyświetlanie imprez tylko użytjkownika + tych na które użytkownik jest zaproszony
+
+Dodanie ograniczeń na daty (od <= do)
+
+
+*/

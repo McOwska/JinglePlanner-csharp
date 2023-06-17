@@ -95,11 +95,19 @@ namespace JinglePlanner.Controllers
                     return RedirectToAction("Index", "Guests");
                 }
                 guest.Responsible = "test";
+                AddGuestToParty(guest.PartyName, guest.Name);
                 _context.Add(guest);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(guest);
+        }
+
+        public void AddGuestToParty(string partyName, string guestName){
+            //methods increas NumberOfGuests in Party
+            var party = _context.Party.Where(p => p.Name == partyName).FirstOrDefault();
+            if(party == null) return;
+            party.NumberOfGuests++;
         }
 
         public bool GuestAtPartyExists(string partyName, string guestName)
