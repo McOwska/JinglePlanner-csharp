@@ -83,6 +83,10 @@ namespace JinglePlanner.Controllers
                     TempData["ErrorMessage"] = "Party with this name and host already exists.";
                     return RedirectToAction("Index", "Parties");
                 }
+                if(party.DateFrom > party.DateTo){
+                    TempData["ErrorMessage"] = "Date from cannot be after date to.";
+                    return RedirectToAction("Index", "Parties");
+                }
                 party.Owner = HttpContext.Session.GetString("UserName");
                 _context.Add(party);
                 await _context.SaveChangesAsync();

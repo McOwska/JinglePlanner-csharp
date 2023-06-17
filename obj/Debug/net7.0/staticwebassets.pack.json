@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\JinglePlanner.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\css\\logo.jpg",
+      "PackagePath": "staticwebassets\\css\\logo.jpg"
+    },
+    {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\js\\logo.jpg",
+      "PackagePath": "staticwebassets\\js\\logo.jpg"
     },
     {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\js\\site.js",
@@ -243,6 +251,10 @@
     {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\logo.jpg",
+      "PackagePath": "staticwebassets\\logo.jpg"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.JinglePlanner.Microsoft.AspNetCore.StaticWebAssets.props",

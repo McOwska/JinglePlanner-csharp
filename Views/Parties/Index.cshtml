@@ -1,7 +1,5 @@
 @model IEnumerable<JinglePlanner.Models.Party>
-<form method="post" asp-controller="Home" asp-action="Logged">
-        <button type="submit">Home</button>
-    </form>
+
 @{
     ViewData["Title"] = "Parties";
 }
@@ -80,3 +78,7 @@
 }
     </tbody>
 </table>
+
+<form method="post" asp-controller="Guests" asp-action="Index">
+        <button type="submit">Guests</button>
+</form>

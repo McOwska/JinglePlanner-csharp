@@ -1,7 +1,5 @@
 @model IEnumerable<JinglePlanner.Models.Guest>
 
-
-
 <h1>Guests</h1>
 
 
@@ -80,3 +78,7 @@
 }
     </tbody>
 </table>
+
+<form method="post" asp-controller="Dishes" asp-action="Index">
+        <button type="submit">Dishes</button>
+</form>

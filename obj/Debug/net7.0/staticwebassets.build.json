@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "D7Bsa7EbQpPPZAINdcgXbhmCwvq57Z4wrvnBmLQ6zz0=",
+  "Hash": "NvQu2Zmj3mFz9HIfF7RSnG9gGXeKuD1PAscsuAM594A=",
   "Source": "JinglePlanner",
   "BasePath": "_content/JinglePlanner",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\JinglePlanner.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\css\\logo.jpg",
+      "SourceId": "JinglePlanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\",
+      "BasePath": "_content/JinglePlanner",
+      "RelativePath": "css/logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\logo.jpg"
+    },
+    {
       "Identity": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\css\\site.css",
       "SourceId": "JinglePlanner",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\js\\logo.jpg",
+      "SourceId": "JinglePlanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\",
+      "BasePath": "_content/JinglePlanner",
+      "RelativePath": "js/logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\logo.jpg"
     },
     {
       "Identity": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\js\\site.js",
@@ -1069,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\logo.jpg",
+      "SourceId": "JinglePlanner",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\",
+      "BasePath": "_content/JinglePlanner",
+      "RelativePath": "logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo.jpg"
     }
   ]
 }

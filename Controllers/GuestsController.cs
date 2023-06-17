@@ -102,6 +102,11 @@ namespace JinglePlanner.Controllers
                     TempData["ErrorMessage"] = "Guest already exists at this party.";
                     return RedirectToAction("Index", "Guests");
                 }
+                if(guest.Arrival > guest.Departure){
+                    TempData["ErrorMessage"] = "Arrival cannot be after departure date.";
+                    return RedirectToAction("Index", "Guests");
+                }
+                
                 guest.Responsible = "test";
                 AddGuestToParty(guest.PartyName, guest.Name);
                 _context.Add(guest);
