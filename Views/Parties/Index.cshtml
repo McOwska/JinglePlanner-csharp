@@ -3,10 +3,12 @@
         <button type="submit">Home</button>
     </form>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Parties";
 }
 
-<h1>Index</h1>
+<h1>Parties</h1>
+<hr/>
+
 @if (TempData["ErrorMessage"] != null)
 {
     <div class="alert alert-danger">
@@ -17,6 +19,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>

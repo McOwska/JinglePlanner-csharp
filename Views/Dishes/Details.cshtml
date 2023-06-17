@@ -1,21 +1,17 @@
 @model JinglePlanner.Models.Dish
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = Model.Name;
 }
 
-<h1>Details</h1>
+<h1>@Model.Name</h1>
+<hr />
 
 <div>
-    <h4>Dish</h4>
-    <hr />
+    
+    
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        
 
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.GuestName)
@@ -44,7 +40,7 @@
         <div>
             @if (Model.RecipeId != null)
             {
-                <a asp-controller="Recipes"  asp-action="Details" asp-route-id="@Model?.RecipeId">Recipe</a>
+                <a asp-controller="Recipes"  asp-action="Details" asp-route-id="@Model?.Recipe.Id">Recipe</a>
             }
             
         </div>

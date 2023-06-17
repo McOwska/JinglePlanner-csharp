@@ -81,11 +81,9 @@ namespace JinglePlanner.Controllers
                     guestsWithParties.Add(guest.Name + " - " + party.Name);
                 }
             }
-
             ViewBag.Guests = new SelectList(guestsWithParties);
 
             return View();
-
         }
 
         // POST: Dishes/Create
@@ -104,12 +102,9 @@ namespace JinglePlanner.Controllers
                     dish.GuestName = guestAndParty[0];
                     dish.PartyName = guestAndParty[1];
                 }
-                if(dish.RecipeId != null){
-                    dish.Recipe = _context.Recipe.Find(dish.RecipeId);
-                }
-                else{
-                    dish.Recipe = null;
-                }
+
+                
+                dish.Recipe = _context.Recipe.Where(r => r.Name == dish.RecipeId).FirstOrDefault();
 
             }
              _context.Add(dish);
@@ -131,7 +126,7 @@ namespace JinglePlanner.Controllers
             {
                 return NotFound();
             }
-            ViewData["RecipeId"] = new SelectList(_context.Recipe, "Id", "Description", dish.RecipeId);
+            ViewData["RecipeId"] = new SelectList(_context.Recipe, "Id", "Name", dish.RecipeId);
             return View(dish);
         }
 

@@ -1,9 +1,7 @@
 @model IEnumerable<JinglePlanner.Models.Recipe>
-<form method="post" asp-controller="Home" asp-action="Logged">
-        <button type="submit">Home</button>
-    </form>
+
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Recipes";
 }
 
 
@@ -14,11 +12,9 @@
     </div>
 }
 
-<h1>Index</h1>
+<h1>Recipes</h1>
+<hr />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 @using (Html.BeginForm("Index", "Recipes", FormMethod.Get))
 {
     <div class="form-group">
@@ -29,6 +25,10 @@
     </div>
     <button type="submit" class="btn btn-primary">Search</button>
 }
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 
 <table class="table">
     <thead>

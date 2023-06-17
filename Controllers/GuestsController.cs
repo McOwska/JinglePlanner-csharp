@@ -205,6 +205,16 @@ namespace JinglePlanner.Controllers
             if (guest != null)
             {
                 _context.Guest.Remove(guest);
+                //methods decrease NumberOfGuests in Party
+                var party = _context.Party.Where(p => p.Name == guest.PartyName).FirstOrDefault();
+                if(party != null) party.NumberOfGuests--;
+                //methods deletes all dishes for guest
+                var dishes = _context.Dish.Where(d => d.GuestName == guest.Name).Where(d=>d.PartyName == guest.PartyName).ToList();
+                if(dishes != null){
+                    foreach(var dish in dishes){
+                        _context.Dish.Remove(dish);
+                    }
+                }
             }
             
             await _context.SaveChangesAsync();
