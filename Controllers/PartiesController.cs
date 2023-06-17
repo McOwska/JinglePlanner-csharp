@@ -189,6 +189,11 @@ namespace JinglePlanner.Controllers
             if (party != null)
             {
                 _context.Party.Remove(party);
+                //remove all guests which take part in this party
+                var guests = _context.Guest.Where(g => g.PartyName== party.Name).ToList();
+                if(guests != null){
+                    _context.Guest.RemoveRange(guests);
+                }
             }
             
             await _context.SaveChangesAsync();

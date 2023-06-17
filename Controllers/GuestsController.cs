@@ -39,20 +39,27 @@ namespace JinglePlanner.Controllers
 
             if (!String.IsNullOrEmpty(partyName))
             {
-                var guests = _context.Guest.Where(g => g.PartyName == partyName);
+                var guests = _context.Guest.Where(g => g.PartyName == partyName).Where(g=>parties.Contains(g.PartyName));
                 guests = guests.OrderBy(g => g.Name);
                 return View(await guests.ToListAsync());
             }
 
             if(!String.IsNullOrEmpty(searchString))
             {
-                var guests = _context.Guest.Where(g => g.Name.Contains(searchString));
+                var guests = _context.Guest.Where(g => g.Name.Contains(searchString)).Where(g=>parties.Contains(g.PartyName));
                 return View(await guests.ToListAsync());
             }
 
-            return _context.Guest != null ? 
-                          View(await _context.Guest.ToListAsync()) :
-                          Problem("Entity set 'JinglePlannerContext.Guest'  is null.");
+            if(userName == "admin"){
+                var guestsAllAdmin = _context.Guest.Select(g=>g);
+                guestsAllAdmin = guestsAllAdmin.OrderBy(g => g.Name);
+                return View(await guestsAllAdmin.ToListAsync());
+            }
+
+            var guestsAll = _context.Guest.Where(g=>parties.Contains(g.PartyName));
+            guestsAll = guestsAll.OrderBy(g => g.Name);
+            return View(await guestsAll.ToListAsync());
+
         }
 
         // GET: Guests/Details/5
@@ -76,7 +83,8 @@ namespace JinglePlanner.Controllers
         // GET: Guests/Create
         public IActionResult Create()
         {
-            var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
+            string userName = UserName();
+            var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
             var users = _context.User.Select(u => u.UserName).Distinct().ToList();
             ViewBag.Users = new SelectList(users);

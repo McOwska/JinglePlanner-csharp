@@ -3,6 +3,12 @@
 
 
 <h1>Index</h1>
+<form method="post" asp-controller="Home" asp-action="Logged">
+        <button type="submit">Home</button>
+    </form>
+@{
+    ViewData["Title"] = "Index";
+}
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -43,9 +49,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.PartyName)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Responsible)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -67,9 +71,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.PartyName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Responsible)
-            </td>
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
