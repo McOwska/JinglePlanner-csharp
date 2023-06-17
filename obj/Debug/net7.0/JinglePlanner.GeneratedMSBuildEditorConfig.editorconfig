@@ -16,26 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\48732\OneDrive\Pulpit\JinglePlanner
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/48732/OneDrive/Pulpit/JinglePlanner/Views/Friends/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJpZW5kc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/48732/OneDrive/Pulpit/JinglePlanner/Views/Friends/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJpZW5kc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/48732/OneDrive/Pulpit/JinglePlanner/Views/Friends/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJpZW5kc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/48732/OneDrive/Pulpit/JinglePlanner/Views/Friends/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJpZW5kc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/48732/OneDrive/Pulpit/JinglePlanner/Views/Friends/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRnJpZW5kc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/48732/OneDrive/Pulpit/JinglePlanner/Views/Guests/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Vlc3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

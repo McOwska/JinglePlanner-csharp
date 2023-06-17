@@ -33,12 +33,14 @@ namespace JinglePlanner.Controllers
             if(userName == "") return RedirectToAction("Index", "Home");
 
 
-            var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
+            // var parties = _context.Party.Select(p=>p.Name).Distinct().ToList();
+            var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
 
             if (!String.IsNullOrEmpty(partyName))
             {
                 var guests = _context.Guest.Where(g => g.PartyName == partyName);
+                guests = guests.OrderBy(g => g.Name);
                 return View(await guests.ToListAsync());
             }
 
