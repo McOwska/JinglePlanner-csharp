@@ -52,7 +52,7 @@ namespace JinglePlanner.Controllers
         }
 
         // GET: Recipes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string? name)
         {
             if(HttpContext.Session.GetString("IsLoggedIn") == "true"){
                 if (id == null || _context.Recipe == null)
@@ -60,8 +60,12 @@ namespace JinglePlanner.Controllers
                 return NotFound();
             }
 
-            var recipe = await _context.Recipe
-                .FirstOrDefaultAsync(m => m.Id == id);
+            if(name != null){
+                id = _context.Recipe.FirstOrDefault(x => x.Name == name).Id;
+            }
+
+            var recipe = await _context.Recipe.FirstOrDefaultAsync(m => m.Id == id);
+            
             if (recipe == null)
             {
                 return NotFound();
@@ -72,6 +76,9 @@ namespace JinglePlanner.Controllers
             return RedirectToAction("Index", "Home");
             
         }
+
+        
+
 
         // GET: Recipes/Create
         public IActionResult Create()
@@ -123,6 +130,7 @@ namespace JinglePlanner.Controllers
                 }
 
                 var recipe = await _context.Recipe.FindAsync(id);
+                
                 if (recipe == null)
                 {
                     return NotFound();

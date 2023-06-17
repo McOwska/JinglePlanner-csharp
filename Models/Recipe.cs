@@ -9,7 +9,6 @@ public enum RecipeType
     Christmas,
     Easter,
     Birthday,
-    Other
 }
 
 

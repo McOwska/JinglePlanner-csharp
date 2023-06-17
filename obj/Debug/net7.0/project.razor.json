@@ -18660,13 +18660,8 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Friends\\Index.cshtml",
-      "TargetPath": "Views\\Friends\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Friends\\Create.cshtml",
-      "TargetPath": "Views\\Friends\\Create.cshtml",
+      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Dishes\\Index.cshtml",
+      "TargetPath": "Views\\Dishes\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18677,11 +18672,6 @@
     {
       "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Users\\Index.cshtml",
       "TargetPath": "Views\\Users\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Friends\\Details.cshtml",
-      "TargetPath": "Views\\Friends\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18705,11 +18695,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Friends\\Edit.cshtml",
-      "TargetPath": "Views\\Friends\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"
@@ -18717,6 +18702,11 @@
     {
       "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Recipes\\Edit.cshtml",
       "TargetPath": "Views\\Recipes\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Dishes\\Delete.cshtml",
+      "TargetPath": "Views\\Dishes\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18737,6 +18727,11 @@
     {
       "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Dishes\\Edit.cshtml",
+      "TargetPath": "Views\\Dishes\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18765,6 +18760,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Dishes\\Create.cshtml",
+      "TargetPath": "Views\\Dishes\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Dishes\\Details.cshtml",
+      "TargetPath": "Views\\Dishes\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Recipes\\Create.cshtml",
       "TargetPath": "Views\\Recipes\\Create.cshtml",
       "FileKind": "mvc"
@@ -18787,11 +18792,6 @@
     {
       "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "c:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\Views\\Friends\\Delete.cshtml",
-      "TargetPath": "Views\\Friends\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
