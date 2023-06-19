@@ -5,12 +5,28 @@
       "PackagePath": "staticwebassets\\JinglePlanner.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\Images\\elf1.png",
+      "PackagePath": "staticwebassets\\Images\\elf1.png"
+    },
+    {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\Images\\elf2.png",
+      "PackagePath": "staticwebassets\\Images\\elf2.png"
+    },
+    {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\Images\\elf3.png",
+      "PackagePath": "staticwebassets\\Images\\elf3.png"
+    },
+    {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\css\\logo.jpg",
       "PackagePath": "staticwebassets\\css\\logo.jpg"
     },
     {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\elf1.png",
+      "PackagePath": "staticwebassets\\elf1.png"
     },
     {
       "Id": "C:\\Users\\48732\\OneDrive\\Pulpit\\JinglePlanner\\wwwroot\\favicon.ico",

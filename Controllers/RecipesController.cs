@@ -211,6 +211,13 @@ namespace JinglePlanner.Controllers
                     return Problem("Entity set 'JinglePlannerContext.Recipe'  is null.");
                 }
                 var recipe = await _context.Recipe.FindAsync(id);
+                var dishes = _context.Dish.Where(x => x.RecipeId == recipe.Name);
+                foreach (var dish in dishes)
+                {
+                    dish.RecipeId = null;
+                }
+
+
                 if (recipe != null)
                 {
                     _context.Recipe.Remove(recipe);

@@ -39,6 +39,7 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a href="@Url.Action("Index", "Dishes", new { PartyName = Model?.PartyName, guestName = Model?.Name})">Dishes</a> |
+    @* <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> | *@
     <a asp-action="Index">Back to List</a>
 </div>

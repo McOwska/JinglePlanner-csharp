@@ -129,6 +129,15 @@ namespace JinglePlanner.Controllers
                 return NotFound();
             }
 
+            if(PartyExists(party.Name)){
+                TempData["ErrorMessage"] = "Party with this name and host already exists.";
+                return RedirectToAction("Index", "Parties");
+            }
+            if(party.DateFrom > party.DateTo){
+                TempData["ErrorMessage"] = "Date from cannot be after date to.";
+                return RedirectToAction("Index", "Parties");
+            }
+
             if (ModelState.IsValid)
             {
                 try

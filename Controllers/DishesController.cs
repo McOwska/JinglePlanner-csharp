@@ -20,7 +20,7 @@ namespace JinglePlanner.Controllers
         }
 
         // GET: Dishes
-        public async Task<IActionResult> Index(string ? partyName)
+        public async Task<IActionResult> Index(string ? partyName, string ? guestName)
         {
 
             string userName = UserName();
@@ -32,9 +32,16 @@ namespace JinglePlanner.Controllers
             var guests = _context.Guest.Where(g => parties.Contains(g.PartyName)).Select(g=>g.Name).Distinct().ToList();
             var dishes = _context.Dish.Where(d => guests.Contains(d.GuestName)).Where(d => parties.Contains(d.PartyName)).Select(d=>d);
             
+            ViewBag.GuestsNames = new SelectList(guests);
+
             if (!String.IsNullOrEmpty(partyName))
             {
                 dishes = dishes.Where(d => d.PartyName == partyName);
+            }
+
+            if (!String.IsNullOrEmpty(guestName))
+            {
+                dishes = dishes.Where(d => d.GuestName == guestName);
             }
 
             return View(await dishes.ToListAsync());
@@ -43,6 +50,9 @@ namespace JinglePlanner.Controllers
         // GET: Dishes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+          
             if (id == null || _context.Dish == null)
             {
                 return NotFound();
@@ -69,6 +79,8 @@ namespace JinglePlanner.Controllers
         public IActionResult Create()
         {
             string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+          
             var recipies = _context.Recipe.Select(r => r.Name).ToList();
             var recipiesSelectList = new SelectList(recipies);
             ViewBag.Recipies = recipiesSelectList;
@@ -116,6 +128,9 @@ namespace JinglePlanner.Controllers
         // GET: Dishes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+          
             if (id == null || _context.Dish == null)
             {
                 return NotFound();
@@ -169,6 +184,9 @@ namespace JinglePlanner.Controllers
         // GET: Dishes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+          
             if (id == null || _context.Dish == null)
             {
                 return NotFound();

@@ -63,6 +63,9 @@ namespace JinglePlanner.Controllers
         // GET: Guests/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+
             if (id == null || _context.Guest == null)
             {
                 return NotFound();
@@ -82,6 +85,8 @@ namespace JinglePlanner.Controllers
         public IActionResult Create()
         {
             string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+
             var parties = _context.Party.Where(p => p.Owner == userName).Select(p=>p.Name).Distinct().ToList();
             ViewBag.Parties = new SelectList(parties);
             var users = _context.User.Select(u => u.UserName).Distinct().ToList();
@@ -96,6 +101,9 @@ namespace JinglePlanner.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Email,Arrival,Departure,PartyName,Responsible")] Guest guest)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+
             if (ModelState.IsValid)
             {
                 if(GuestAtPartyExists(guest.PartyName, guest.Name)){
@@ -131,6 +139,9 @@ namespace JinglePlanner.Controllers
         // GET: Guests/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+
             if (id == null || _context.Guest == null)
             {
                 return NotFound();
@@ -182,6 +193,9 @@ namespace JinglePlanner.Controllers
         // GET: Guests/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            string userName = UserName();
+            if(userName == "") return RedirectToAction("Index", "Home");
+
             if (id == null || _context.Guest == null)
             {
                 return NotFound();

@@ -7,11 +7,17 @@
 <h1>Dishes</h1>
 <hr/>
 
+@using (Html.BeginForm("Index", "Dishes", FormMethod.Get))
+{
+    <div class="form-group">
+        @Html.DropDownList("partyName", (SelectList)ViewBag.PartiesNames, "All")
+    </div>
+    <div class="form-group">
+        @Html.DropDownList("guestName", (SelectList)ViewBag.GuestsNames, "All")
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+}
 
-<div class="form-group">
-        @Html.DropDownList("PartyName", (SelectList)ViewBag.PartiesNames, "All")
-</div>
-<button type="submit" class="btn btn-primary">Search</button>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -56,7 +62,7 @@
                 @Html.DisplayFor(modelItem => item.RecipeId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.DishId">Edit</a> |
+                @* <a asp-action="Edit" asp-route-id="@item.DishId">Edit</a> | *@
                 <a asp-action="Details" asp-route-id="@item.DishId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.DishId">Delete</a>
             </td>
@@ -64,3 +70,5 @@
 }
     </tbody>
 </table>
+
+<img src="~/Images/elf3.png" alt="Opis obrazu" />
